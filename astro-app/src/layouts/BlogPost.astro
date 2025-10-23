@@ -20,7 +20,7 @@ const { headings } = await render(post);
 ---
 
 <BaseLayout meta={{ articleDate, description, ogImage: socialImage, title }}>
-	<div class="fixed left-0 top-0 z-10 flex h-16 md:h-20 w-full bg-bgColor overflow-hidden">
+	<div class="fixed left-0 top-0 z-10 flex h-16 md:h-24 w-full bg-bgColor overflow-hidden">
 		<!-- Background 
 			TODO: This approach is not optimal and requires improvements. 
   			- Too many absolutely positioned elements can affect performance. 
@@ -323,7 +323,7 @@ const { headings } = await render(post);
 		const buttonsPanel = document.getElementById("buttons-panel");
 		
 		if (buttonsPanel) {
-			buttonsPanel.classList.add("fixed");
+			buttonsPanel.classList.add("md:fixed");
 			console.log("Class 'fixed' added to the buttons-panel element.");
 		} else {
 			console.error("Element with ID 'buttons-panel' not found.");
