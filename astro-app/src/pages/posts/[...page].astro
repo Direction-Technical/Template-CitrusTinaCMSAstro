@@ -13,6 +13,13 @@ export const getStaticPaths = (async ({ paginate }) => {
 	const MAX_POSTS_PER_PAGE = 5;
 	const MAX_TAGS = 20;
 	const allPosts = await getAllPosts();
+
+	if (allPosts.length === 0) {
+		// If no blog posts exist, return a single path that redirects to 404.
+		// This ensures Astro doesn't try to render an empty paginated list.
+		return [{ params: { page: "404" }, props: { page: undefined, uniqueTags: [] } }];
+	}
+
 	const uniqueTags = getUniqueTags(allPosts).slice(0, MAX_TAGS);
 	return paginate(allPosts.sort(collectionDateSort), {
 		pageSize: MAX_POSTS_PER_PAGE,
@@ -26,6 +33,10 @@ interface Props {
 }
 
 const { page, uniqueTags } = Astro.props;
+
+if (!page) {
+	return Astro.redirect("/404");
+}
 
 const meta = {
 	description: "Read my collection of posts and the things that interest me",

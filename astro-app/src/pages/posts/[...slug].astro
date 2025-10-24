@@ -7,6 +7,10 @@ import type { GetStaticPaths, InferGetStaticPropsType } from "astro";
 // If you're using an adaptor in SSR mode, getStaticPaths wont work -> https://docs.astro.build/en/guides/routing/#modifying-the-slug-example-for-ssr
 export const getStaticPaths = (async () => {
 	const blogEntries = await getAllPosts();
+	// If no blog posts exist, return an empty array. Astro will not generate any pages for this route.
+	if (blogEntries.length === 0) {
+		return [];
+	}
 	return blogEntries.map((post) => ({
 		params: { slug: post.id },
 		props: { post },
@@ -16,6 +20,12 @@ export const getStaticPaths = (async () => {
 type Props = InferGetStaticPropsType<typeof getStaticPaths>;
 
 const { post } = Astro.props;
+
+// Ensure post is a valid CollectionEntry before attempting to render
+if (!post || typeof post !== 'object' || !('collection' in post) || !('slug' in post)) {
+	return Astro.redirect("/404");
+}
+
 const { Content } = await render(post);
 ---
 
