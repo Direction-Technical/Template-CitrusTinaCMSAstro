@@ -1,5 +1,8 @@
 ---
-import { menuLinks, siteConfig } from "@/site.config";
+import { siteConfig } from "@/site.config";
+import { getMenuLinks } from "@/data/menuLinks";
+
+const menuLinks = await getMenuLinks();
 
 const year = new Date().getFullYear();
 ---

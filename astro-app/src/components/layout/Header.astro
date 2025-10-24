@@ -1,7 +1,10 @@
 ---
 import Search from "@/components/Search.astro";
 import ThemeToggle from "@/components/ThemeToggle.astro";
-import { siteConfig, menuLinks } from "@/site.config";
+import { siteConfig } from "@/site.config";
+import { getMenuLinks } from "@/data/menuLinks";
+
+const menuLinks = await getMenuLinks();
 import { Icon } from "astro-icon/components";
 ---
 
@@ -180,6 +183,3 @@ import { Icon } from "astro-icon/components";
 		});
 	});
 </script>
-
-
-
