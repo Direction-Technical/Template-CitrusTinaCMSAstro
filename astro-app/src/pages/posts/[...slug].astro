@@ -11,10 +11,13 @@ export const getStaticPaths = (async () => {
 	if (blogEntries.length === 0) {
 		return [];
 	}
-	return blogEntries.map((post) => ({
-		params: { slug: post.id },
-		props: { post },
-	}));
+	return blogEntries.map((post) => {
+		console.log(`Generating path for slug: ${post.slug}`);
+		return {
+			params: { slug: post.slug },
+			props: { post },
+		};
+	});
 }) satisfies GetStaticPaths;
 
 type Props = InferGetStaticPropsType<typeof getStaticPaths>;
