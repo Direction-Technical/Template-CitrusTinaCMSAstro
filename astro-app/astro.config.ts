@@ -25,6 +25,7 @@ import {
 
 // https://astro.build/config
 export default defineConfig({
+  trailingSlash: "always", // Ensure consistent trailing slash behavior
   image: {
     domains: ["webmention.io"],
   },
@@ -145,7 +146,7 @@ export default defineConfig({
     },
   },
   server: {
-    // port: 1234,
+    port: 4321,
     host: true,
   },
 });
