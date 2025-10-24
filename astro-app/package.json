@@ -1,6 +1,7 @@
 {
   "name": "astro-app",
   "version": "1.0.0",
+  "type": "module",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
@@ -16,6 +17,7 @@
   "dependencies": {
     "@astrojs/markdoc": "^0.15.8",
     "@astrojs/mdx": "4.0.3",
+    "@astrojs/node": "^9.5.0",
     "@astrojs/react": "^4.4.0",
     "@astrojs/rss": "4.0.11",
     "@astrojs/sitemap": "3.2.1",
@@ -23,10 +25,11 @@
     "@keystatic/astro": "^5.0.6",
     "@keystatic/core": "^0.5.48",
     "@shikijs/transformers": "^1.25.1",
-    "astro": "5.1.2",
+    "astro": "^5.15.1",
     "astro-icon": "^1.1.5",
     "astro-robots-txt": "^1.0.0",
     "astro-webmanifest": "^1.0.0",
+    "cookie": "^1.0.2",
     "cssnano": "^7.0.6",
     "hastscript": "^9.0.0",
     "mdast-util-directive": "^3.0.0",
@@ -41,6 +44,9 @@
     "sharp": "^0.33.5",
     "unified": "^11.0.5",
     "unist-util-visit": "^5.0.0"
+  },
+  "resolutions": {
+    "cookie": "0.6.0"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.4",

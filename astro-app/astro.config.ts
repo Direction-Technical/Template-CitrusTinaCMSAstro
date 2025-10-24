@@ -10,6 +10,7 @@ import { siteConfig } from "./src/site.config";
 import react from '@astrojs/react'
 import markdoc from '@astrojs/markdoc'
 import keystatic from '@keystatic/astro'
+import node from '@astrojs/node';
 
 // Remark plugins
 import remarkDirective from "remark-directive"; /* handle ::: directives as nodes */
@@ -29,7 +30,7 @@ import type { prefetch } from "astro:prefetch";
 
 // https://astro.build/config
 export default defineConfig({
-  trailingSlash: "always", // Ensure consistent trailing slash behavior
+  output: 'server', // Keystatic requires server-side rendering
   image: {
     domains: ["webmention.io"],
   },
@@ -42,6 +43,9 @@ export default defineConfig({
     react(), 
     markdoc(), 
     keystatic(),
+    node({
+      mode: 'standalone',
+    }),
     sitemap(),
     mdx(),
     robotsTxt(),
@@ -130,6 +134,7 @@ export default defineConfig({
     },
     optimizeDeps: {
       exclude: ["@resvg/resvg-js"],
+      include: ['cookie'],
     },
     plugins: [rawFonts([".ttf", ".woff"])],
   },
