@@ -7,6 +7,9 @@ import robotsTxt from "astro-robots-txt";
 import webmanifest from "astro-webmanifest";
 import { defineConfig, envField } from "astro/config";
 import { siteConfig } from "./src/site.config";
+import react from '@astrojs/react'
+import markdoc from '@astrojs/markdoc'
+import keystatic from '@keystatic/astro'
 
 // Remark plugins
 import remarkDirective from "remark-directive"; /* handle ::: directives as nodes */
@@ -22,6 +25,7 @@ import {
   transformerMetaHighlight,
   transformerNotationDiff,
 } from "@shikijs/transformers";
+import type { prefetch } from "astro:prefetch";
 
 // https://astro.build/config
 export default defineConfig({
@@ -35,6 +39,9 @@ export default defineConfig({
       applyBaseStyles: false,
       nesting: true,
     }),
+    react(), 
+    markdoc(), 
+    keystatic(),
     sitemap(),
     mdx(),
     robotsTxt(),
