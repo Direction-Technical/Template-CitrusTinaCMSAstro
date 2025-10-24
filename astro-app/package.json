@@ -2,7 +2,7 @@
   "name": "astro-app",
   "version": "1.0.0",
   "scripts": {
-    "dev": "astro dev",
+    "dev": "tinacms dev -c \"astro dev\"",
     "start": "astro dev",
     "build": "astro build",
     "postbuild": "pagefind --site dist",
